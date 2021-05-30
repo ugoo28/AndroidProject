@@ -44,7 +44,7 @@ class PlayersDetailFragment : Fragment() {
     }
 
     private fun callApi() {
-        nbaApi.getPlayersDetail("3").enqueue(object : Callback<NbaPlayers>{
+        nbaApi.getPlayersDetail("2").enqueue(object : Callback<NbaPlayers>{
             override fun onFailure(
                     call: Call<NbaPlayers>,
                     t: Throwable
