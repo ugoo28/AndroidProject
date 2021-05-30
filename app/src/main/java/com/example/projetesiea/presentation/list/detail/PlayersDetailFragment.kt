@@ -44,7 +44,8 @@ class PlayersDetailFragment : Fragment() {
     }
 
     private fun callApi() {
-        nbaApi.getPlayersDetail("2").enqueue(object : Callback<NbaPlayers>{
+        val id = arguments?.getInt("playersId") ?: -1
+        nbaApi.getPlayersDetail(id).enqueue(object : Callback<NbaPlayers>{
             override fun onFailure(
                     call: Call<NbaPlayers>,
                     t: Throwable

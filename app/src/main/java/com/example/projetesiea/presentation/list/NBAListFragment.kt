@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,8 +29,10 @@ class NBAListFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private val adapter = NBAAdapter(listOf(), ::onClickedNbaPlayers)
 
-    fun onClickedNbaPlayers(nbaPlayers: NbaPlayers) {
-        findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+    fun onClickedNbaPlayers(id: Int) {
+        findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundleOf(
+                "playersId" to id
+        ))
     }
 
 

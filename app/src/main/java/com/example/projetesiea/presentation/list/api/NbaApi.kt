@@ -10,5 +10,5 @@ interface NbaApi {
     fun getShoesList(): Call<NbaResponse>
 
     @GET("players/{id}")
-    fun getPlayersDetail(@Path ("id") id: String): Call<NbaPlayers>
+    fun getPlayersDetail(@Path ("id") id: Int): Call<NbaPlayers>
 }

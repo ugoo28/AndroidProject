@@ -9,7 +9,7 @@ import com.example.projetesiea.R
 import com.example.projetesiea.presentation.list.Players.Players
 import com.example.projetesiea.presentation.list.api.NbaPlayers
 
-class NBAAdapter(private var dataSet: List<NbaPlayers>, var listener: ((NbaPlayers) -> Unit)? = null) : RecyclerView.Adapter<NBAAdapter.ViewHolder>() {
+class NBAAdapter(private var dataSet: List<NbaPlayers>, var listener: ((Int) -> Unit)? = null) : RecyclerView.Adapter<NBAAdapter.ViewHolder>() {
 
 
     /**
@@ -60,7 +60,7 @@ class NBAAdapter(private var dataSet: List<NbaPlayers>, var listener: ((NbaPlaye
         viewHolder.AbbreviationtextView.text = nbaPlayers.team.abbrevation
 
         viewHolder.itemView.setOnClickListener {
-            listener?.invoke(nbaPlayers)
+            listener?.invoke(position)
         }
 
 
