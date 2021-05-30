@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.projetesiea.R
 import com.example.projetesiea.presentation.list.Singletons
 import com.example.projetesiea.presentation.list.Singletons.Companion.nbaApi
+import com.example.projetesiea.presentation.list.api.NbaPlayers
 import com.example.projetesiea.presentation.list.api.PlayersDetailResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -43,20 +44,21 @@ class PlayersDetailFragment : Fragment() {
     }
 
     private fun callApi() {
-        nbaApi.getPlayersDetail("1").enqueue(object : Callback<PlayersDetailResponse>{
+        nbaApi.getPlayersDetail("1").enqueue(object : Callback<NbaPlayers>{
             override fun onFailure(
-                    call: Call<PlayersDetailResponse>,
+                    call: Call<NbaPlayers>,
                     t: Throwable
             ) {
 
             }
 
             override fun onResponse(
-                    call: Call<PlayersDetailResponse>,
-                    response: Response<PlayersDetailResponse>
+                    call: Call<NbaPlayers>,
+                    response: Response<NbaPlayers>
             ) {
                 if(response.isSuccessful && response.body() != null){
-                    textViewName.text = response.body()!!.city
+                    val resp = response.body()!!
+                    textViewName.text = resp.team.city
                 }
             }
 
@@ -64,7 +66,7 @@ class PlayersDetailFragment : Fragment() {
     }
 }
 
-private fun <T> Call<T>.enqueue(callback: Callback<PlayersDetailResponse>) {
+private fun <T> Call<T>.enqueue(callback: Callback<NbaPlayers>) {
 
 }
 
