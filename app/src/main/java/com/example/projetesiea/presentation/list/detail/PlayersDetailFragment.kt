@@ -44,7 +44,7 @@ class PlayersDetailFragment : Fragment() {
     }
 
     private fun callApi() {
-        nbaApi.getPlayersDetail("2").enqueue(object : Callback<NbaPlayers>{
+        nbaApi.getPlayersDetail("1").enqueue(object : Callback<NbaPlayers>{
             override fun onFailure(
                     call: Call<NbaPlayers>,
                     t: Throwable
@@ -59,6 +59,7 @@ class PlayersDetailFragment : Fragment() {
                 if(response.isSuccessful && response.body() != null){
                     val resp = response.body()!!
                     textViewName.text = resp.team.city
+
                 }
             }
 
