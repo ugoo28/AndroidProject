@@ -53,14 +53,9 @@ class NBAListFragment : Fragment() {
             adapter = this@NBAListFragment.adapter
         }
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://www.balldontlie.io/api/v1/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
 
-        val nbaApi : NbaApi = retrofit.create(NbaApi::class.java)
 
-        nbaApi.getShoesList().enqueue(object: Callback<NbaResponse>{
+        Singletons.nbaApi.getShoesList().enqueue(object: Callback<NbaResponse>{
             override fun onFailure(call: Call<NbaResponse>, t: Throwable) {
 
                 //TODO("Not yet implemented")
