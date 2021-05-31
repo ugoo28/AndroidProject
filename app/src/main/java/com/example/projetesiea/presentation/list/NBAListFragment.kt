@@ -31,7 +31,7 @@ class NBAListFragment : Fragment() {
 
     fun onClickedNbaPlayers(id: Int) {
         findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundleOf(
-                "playersId" to (id + 1)
+                "playersId" to id
         ))
     }
 
